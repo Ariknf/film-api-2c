@@ -278,7 +278,7 @@ app.post(
   '/directors',
   [authenticateToken],
   async (req, res, next) => {
-    const { name } = req.body;
+    const { name , birthYear} = req.body;
 
     if (!name || !birthYear) {
       return res.status(400).json({ error: 'name wajib diisi' });
