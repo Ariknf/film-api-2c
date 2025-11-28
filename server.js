@@ -356,6 +356,13 @@ app.delete(
   }
 );
 
+//coba coba
+app.get(
+  '/coba', (req, res) => { 
+    res.json({ 'status': 'ok' });
+  }
+);
+
 
 // === ERROR HANDLING ===
 app.use((req, res) => {
