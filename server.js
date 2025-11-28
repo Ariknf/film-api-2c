@@ -280,18 +280,18 @@ app.post(
   async (req, res, next) => {
     const { name } = req.body;
 
-    if (!name) {
+    if (!name || !birthYear) {
       return res.status(400).json({ error: 'name wajib diisi' });
     }
 
     const sql = `
-      INSERT INTO directors (name)
-      VALUES ($1)
+      INSERT INTO directors (name, "birthYear")
+      VALUES ($1, $2)
       RETURNING *
     `;
 
     try {
-      const result = await db.query(sql, [name]);
+      const result = await db.query(sql, [name, birthYear]);
       res.status(201).json(result.rows[0]);
     } catch (err) {
       next(err);
